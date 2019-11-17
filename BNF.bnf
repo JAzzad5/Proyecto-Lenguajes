@@ -1,0 +1,45 @@
+#BNF de un lenguaje de programación
+
+<lenguaje> ::= <conjunto_de_instrucciones>
+
+<conjunto_de_instrucciones> ::= <instruccion> | <conjunto_de_instrucciones> <instruccion>
+
+<instruccion> ::= <variable> | <definir_variable> | <ciclos> | <condicionales> | <leer> | <imprimir> | <ubicar_cursor> |                              <asignacion> | <aritmetica> |
+
+<variable> ::= <mayuscula> <alphanum>
+
+<definir_variable> ::= "definir" <variable> <tipo>
+
+<ciclos> ::= <repetir> | <mientras>
+    <repetir> ::= "repetir" <conjunto_de_instrucciones> "hasta" <condicion>
+    <mientras> ::= "mientras" <condicion> "repetir" <conjunto_de_instrucciones>
+
+<condicionales> ::= <Si> | <sino>> ::= "si" <condicion> "hacer"
+    <si> ::= "si" <condicion> "hacer" <conjunto_de_instrucciones> "finsi" 
+    <sino> ::= "si" <condicion> "hacer" <conjunto_de_instrucciones> "sino" <conjunto_de_instrucciones> "finsi" 
+
+<leer> ::= "leer" <variable>
+<imprimir> ::= "imprimir" <variable> | "imprimir" '"' <alphanum> '"'
+<ubicar_cursor> ::= "cursor" <numero> "," <numero>
+<aritmetica> ::= <numero> <operador_aritmetico> <numero> | <aritmetica> <operador_aritmetico> <numero> 
+<asignacion> ::= <variable> "<-" <alphanum>
+
+<condicion> ::= <igual_que> | <distinto_que> | <mayor_que> | <menor_que> | <mayor_igual_que> | <menor_igual_que> 
+    <igual_que>::= <cadena>"=="<cadena> | <numero2> "==" <numero2>
+    <distinto_que>::= <cadena>"!="<cadena> | <numero2> "!=" <numero2>
+    <mayor_que>::= <numero2> ">" <numero2>  
+    <menor_que>::= <numero2> "<" <numero2>
+    <mayor_igual_que>::= <numero2> ">=" <numero2>  
+    <menor_igual_que>::= <numero2> "<=" <numero2>
+
+<tipo>::= <entero> | <decimal> | <cadena>  
+    <entero> ::= <numero> | <signo> <numero>
+    <decimal> ::= <numero> "." <numero> | <signo> <numero> "." <numero>
+    <cadena>::=  '"'<mayuscula>'"' | '"'<minusculas>'"' | '"'<numero>'"' | '"'<cadena><mayuscula>'"' | '"'<cadena><minusculas>'"'  |             '"'<cadena><numero>'"'
+<numero2>::= <entero> | <decimal>
+<numero> ::= <digito> | <numero><digito>
+<alphanum> ::= <mayuscula> | <minusculas> | <numero> | <alphanum><mayuscula> | <alphanum><minusculas>  | <alphanum><numero> 
+<mayuscula>::= "A"|"B"|"C"|"D"|"E"|"F"|"G"|"H"|"I"|"J"|"K"|"L"|"M"|"N"|"O"|"P"|"Q"|"R"|"S"|"T"|"U"|"V"|"W"|"X"|"Y"|"Z"
+<minusculas> ::= "a"|"b"|"c"|"d"|"e"|"f"|"g"|"h"|"i"|"j"|"k"|"l"|"m"|"n"|"o"|"p"|"q"|"r"|"s"|"t"|"u"|"v"|"w"|"x"|"y"|"z"
+<digito> ::= "0"|"1"|"2"|"3"|"4"|"5"|"6"|"7"|"8"|"9"
+<operador_aritmetico> ::= "+"|"-"|"*"|"/"
