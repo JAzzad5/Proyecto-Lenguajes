@@ -6,7 +6,7 @@
 
 <instruccion> ::= <variable> | <definir_variable> | <ciclos> | <condicionales> | <leer> | <imprimir> | <ubicar_cursor> | <asignacion> | <aritmetica> |
 
-<variable> ::= <mayuscula> <alphanum>
+<variable> ::= <mayuscula> | <mayuscula> <alphanum>
 
 <definir_variable> ::= "definir" <variable> <tipo>
 
@@ -21,21 +21,23 @@
 <leer> ::= "leer" <variable>
 <imprimir> ::= "imprimir" <variable> | "imprimir" '"' <alphanum> '"'
 <ubicar_cursor> ::= "cursor" <numero> "," <numero>
-<aritmetica> ::= <numero2> <operador_aritmetico> <numero2> | <aritmetica> <operador_aritmetico> <numero2> 
-<asignacion> ::= <variable> "<-" <alphanum>
+
+<aritmetica> ::= <numero2> <operador_aritmetico> <numero2> |<variable> <operador_aritmetico> <variable> | <aritmetica> <operador_aritmetico> <numero2> | <aritmetica> <operador_aritmetico> <variable>
+
+<asignacion> ::= <variable> "<-" <alphanum> | variable "<-" <aritmetica>
 
 <condicion> ::= <igual_que> | <distinto_que> | <mayor_que> | <menor_que> | <mayor_igual_que> | <menor_igual_que> 
-    <igual_que>::= <cadena>"=="<cadena> | <numero2> "==" <numero2>
-    <distinto_que>::= <cadena>"!="<cadena> | <numero2> "!=" <numero2>
-    <mayor_que>::= <numero2> ">" <numero2>  
-    <menor_que>::= <numero2> "<" <numero2>
-    <mayor_igual_que>::= <numero2> ">=" <numero2>  
-    <menor_igual_que>::= <numero2> "<=" <numero2>
+    <igual_que>::= <cadena>"=="<cadena> | <numero2> "==" <numero2> | <variable>"=="<cadena> | <variable>"=="<numero2>
+    <distinto_que>::= <cadena>"!="<cadena> | <numero2> "!=" <numero2> | <variable>"!="<cadena> | <variable>"!="<numero2>
+    <mayor_que>::= <numero2> ">" <numero2> | <variable> ">" <numero2> | <numero2> ">" <variable> | <variable> ">" <variable>      
+    <menor_que>::= <numero2> "<" <numero2> | <variable> "<" <numero2> | <numero2> "<" <variable> | <variable> "<" <variable>
+    <mayor_igual_que>::= <numero2> ">=" <numero2>  | <variable> ">=" <numero2> | <numero2> ">=" <variable> | <variable> ">=" <variable>
+    <menor_igual_que>::= <numero2> "<=" <numero2>  | <variable> "<=" <numero2> | <numero2> "<=" <variable> | <variable> "<=" <variable>
 
 <tipo>::= <entero> | <decimal> | <cadena>  
     <entero> ::= <numero> | <signo> <numero>
     <decimal> ::= <numero> "." <numero> | <signo> <numero> "." <numero>
-    <cadena>::=  '"'<mayuscula>'"' | '"'<minusculas>'"' | '"'<numero>'"' | '"'<cadena><mayuscula>'"' | '"'<cadena><minusculas>'"'  |'"'<cadena><numero>'"'
+    <cadena>::=  '"'<alphanum>'"'
 <numero2>::= <entero> | <decimal>
 <numero> ::= <digito> | <numero><digito>
 <alphanum> ::= <mayuscula> | <minusculas> | <numero> | <alphanum><mayuscula> | <alphanum><minusculas>  | <alphanum><numero> 
