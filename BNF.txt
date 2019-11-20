@@ -14,7 +14,7 @@
     <repetir> ::= "repetir" <conjunto_de_instrucciones> "hasta" <condicion>
     <mientras> ::= "mientras" <condicion> "repetir" <conjunto_de_instrucciones>
 
-<condicionales> ::= <Si> | <sino>> ::= "si" <condicion> "hacer"
+<condicionales> ::= <Si> | <sino>
     <si> ::= "si" <condicion> "hacer" <conjunto_de_instrucciones> "finsi" 
     <sino> ::= "si" <condicion> "hacer" <conjunto_de_instrucciones> "sino" <conjunto_de_instrucciones> "finsi" 
 
