@@ -1,0 +1,2 @@
+si ( 2 > 1 ) repetir { A <- 2 }
+sino hacer { F1 <- 2.2 }
